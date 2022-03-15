@@ -10,10 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from email.policy import default
 from pathlib import Path
 import os
 import django_heroku
 import whitenoise
+import dj_database_url
+from dotenv import load_dotenv, find_dotenv
 
 import django
 
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -94,16 +98,20 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # }
 
 #for postgres
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd324l9pgd8vvsq',
-        'USER' : 'vriljhpjxqwkzb',
-        'PASSWORD' : '959a2dfd91b5dd560a0dc95327abd249e1befea7128cafd2ef81ef42a0ec3ff8',
-        'HOST' : 'ec2-54-156-110-139.compute-1.amazonaws.com',
-        'PORT' : '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd324l9pgd8vvsq',
+#         'USER' : 'vriljhpjxqwkzb',
+#         'PASSWORD' : '959a2dfd91b5dd560a0dc95327abd249e1befea7128cafd2ef81ef42a0ec3ff8',
+#         'HOST' : 'ec2-54-156-110-139.compute-1.amazonaws.com',
+#         'PORT' : '5432',
+#     }
+# }
+
+load_dotenv(find_dotenv())
+
+DATABASES = {'default': dj_database_url.portfolio(default='sqlite:///db.sqlite3', conn_max_age=600, ssl_require=False)}
 
 
 # Password validation
@@ -150,7 +158,7 @@ USE_TZ = True
 
 #for heroku
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 django_heroku.settings(locals())
 
 # Default primary key field type

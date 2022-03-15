@@ -16,6 +16,7 @@ Including another URLconf
 #from xml.etree.ElementInclude import include
 from django.contrib import admin
 from django.urls import path, include
+import static, settings
 
 admin.site.site_header = "Anubhav Yadav Portfolio"
 admin.site.site_title = "Anubhav Yadav Portfolio Portal"
@@ -24,4 +25,4 @@ admin.site.index_title = "Welcome to Anubhav Yadav Portfolio Portal"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
-]
+]+ + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

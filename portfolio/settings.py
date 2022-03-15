@@ -97,21 +97,21 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #     }
 # }
 
-#for postgres
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd324l9pgd8vvsq',
-#         'USER' : 'vriljhpjxqwkzb',
-#         'PASSWORD' : '959a2dfd91b5dd560a0dc95327abd249e1befea7128cafd2ef81ef42a0ec3ff8',
-#         'HOST' : 'ec2-54-156-110-139.compute-1.amazonaws.com',
-#         'PORT' : '5432',
-#     }
-# }
+for postgres
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd324l9pgd8vvsq',
+        'USER' : 'vriljhpjxqwkzb',
+        'PASSWORD' : '959a2dfd91b5dd560a0dc95327abd249e1befea7128cafd2ef81ef42a0ec3ff8',
+        'HOST' : 'ec2-54-156-110-139.compute-1.amazonaws.com',
+        'PORT' : '5432',
+    }
+}
 
-load_dotenv(find_dotenv())
+# load_dotenv(find_dotenv())
 
-DATABASES = {'default': dj_database_url.portfolio(default='sqlite:///db.sqlite3', conn_max_age=600, ssl_require=False)}
+# DATABASES = {'default': dj_database_url.portfolio(default='sqlite:///db.sqlite3', conn_max_age=600, ssl_require=False)}
 
 
 # Password validation

@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 #     }
 # }
 
-for postgres
+#for postgres
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

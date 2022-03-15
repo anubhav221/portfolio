@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from email.policy import default
 from pathlib import Path
 import os
-import django_heroku
+import django_on_heroku
 import whitenoise
 import dj_database_url
 from dotenv import load_dotenv, find_dotenv
@@ -158,8 +158,8 @@ USE_TZ = True
 
 #for heroku
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-django_heroku.settings(locals())
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+django_on_heroku.settings(locals(), staticfiles=False)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
